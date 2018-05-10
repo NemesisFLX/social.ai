@@ -15,10 +15,10 @@ import (
 
 func main() {
 	flags := flag.NewFlagSet("user-auth", flag.ExitOnError)
-	consumerKey := flags.String("consumer-key", "O24oMbZeaY3tittbWMZwZWGrQ", "Twitter Consumer Key")
-	consumerSecret := flags.String("consumer-secret", "ho9Cty53Q3kpTEVPJJWLXYuX8dCYRoATG4Q1RKb19H2qw8sdnQ", "Twitter Consumer Secret")
-	accessToken := flags.String("access-token", "994599121205059584-KJ9QQttF0IVY6C4GLK6npdPh5MKZQcE", "Twitter Access Token")
-	accessSecret := flags.String("access-secret", "EEOhiG3zJcYl3qH6cwtf1Lbrjwq7TihNAVuf890LvRoV5", "Twitter Access Secret")
+	consumerKey := flags.String("consumer-key", "", "Twitter Consumer Key")
+	consumerSecret := flags.String("consumer-secret", "", "Twitter Consumer Secret")
+	accessToken := flags.String("access-token", "", "Twitter Access Token")
+	accessSecret := flags.String("access-secret", "", "Twitter Access Secret")
 	flags.Parse(os.Args[1:])
 	flagutil.SetFlagsFromEnv(flags, "TWITTER")
 
