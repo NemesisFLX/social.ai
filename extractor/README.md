@@ -8,11 +8,3 @@
 Set environment variables in windows:
 
 https://www.computerhope.com/issues/ch000549.htm
-
-Set environment variables in windows:
-
-https://www.computerhope.com/issues/ch000549.htm
-
-Set environment variables in windows:
-
-https://www.computerhope.com/issues/ch000549.htm
