@@ -11,7 +11,7 @@ var client = new Twitter({
  
 var stream = client.stream('statuses/filter', {track: 'javascript'});
 stream.on('data', function(event) {
-  console.log(event.user.followers_count + " | " + event.id);
+  console.log(event.user.followers_count + " | " + event.id_str + " | " + event.created_at + " | " + event.user.screen_name);
 });
  
 stream.on('error', function(error) {
