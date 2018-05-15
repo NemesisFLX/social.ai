@@ -1,4 +1,6 @@
 var Twitter = require('twitter');
+var fs = require('fs');
+
  
 var client = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -9,7 +11,7 @@ var client = new Twitter({
  
 var stream = client.stream('statuses/filter', {track: 'javascript'});
 stream.on('data', function(event) {
-  console.log(event && event.text);
+  console.log(event.user.followers_count + " | " + event.id);
 });
  
 stream.on('error', function(error) {
