@@ -1,5 +1,9 @@
-{ "name" : "TwitterExtractor"
-    , "version" : "0.0.1"
-    , "description" : "A package for extrating twitter messages"
-    , "main" : "extractTwitter.js"
+{
+    "name": "TwitterExtractor",
+    "version": "0.0.1",
+    "description": "A package for extrating twitter messages",
+    "main": "extractTwitter.js",
+    "dependencies": {
+        "mongodb": "^3.1.0-beta4"
+    }
 }
