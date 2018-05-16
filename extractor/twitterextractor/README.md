@@ -19,4 +19,9 @@ Set environment variables in windows:
 https://www.computerhope.com/issues/ch000549.htm
 
 Set environment variables in linux:
+```vim ~/.profile```
 ```export TWITTER_BLA_BLA=XXXXXXXX```
+
+### Run on server
+
+````pm2 start extractTwitter.js```
