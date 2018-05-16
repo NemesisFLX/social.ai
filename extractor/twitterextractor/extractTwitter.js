@@ -16,11 +16,9 @@ var client = new Twitter({
 });
  
 process.argv.forEach(function (val, index, array) {
-    console.log(index + ': ' + val);
     if(index == 2){
         dbPort = val;
         url = "mongodb://" + dbHost + ":" + dbPort;
-        console.log(dbPort);
     }
 });
 
@@ -38,8 +36,8 @@ stream.on('data', function(event) {
         }
     });
     db.close();
+    console.log(event.id_str + " saved!")
   });
-  console.log(event.user.followers_count + " saved!")
 });
  
 stream.on('error', function(error) {
