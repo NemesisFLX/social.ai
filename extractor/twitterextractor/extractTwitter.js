@@ -13,8 +13,17 @@ var client = new Twitter({
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
     access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
     access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-  });
+});
  
+process.argv.forEach(function (val, index, array) {
+    console.log(index + ': ' + val);
+    if(index == 2){
+        dbPort = val;
+        url = "mongodb://" + dbHost + ":" + dbPort;
+        console.log(dbPort);
+    }
+});
+
 var stream = client.stream('statuses/filter', {track: 'javascript'});
 stream.on('data', function(event) {
   console.log(event.user.followers_count + " | " + event.id_str + " | " + event.created_at + " | " + event.user.screen_name);

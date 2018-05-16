@@ -1,6 +1,6 @@
 {
-    "name": "TwitterExtractor",
-    "version": "0.0.1",
+    "name": "twitterextractor",
+    "version": "0.1.2",
     "description": "A package for extrating twitter messages",
     "main": "extractTwitter.js",
     "dependencies": {
