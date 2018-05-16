@@ -1,5 +1,0 @@
-{ "name" : "TwitterExtractor"
-    , "version" : "0.0.1"
-    , "description" : "A package for extrating twitter messages"
-    , "main" : "extractTwitter.js"
-}
