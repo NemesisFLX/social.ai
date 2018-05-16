@@ -1,6 +1,6 @@
 {
-    "dbPort": 27017,
+    "dbPort": 32768,
     "dbHost": "127.0.0.1",
-    "dbName": "social.ai",
+    "dbName": "socialai",
     "dbCollection": "twitterMessages"
 }

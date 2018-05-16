@@ -5,6 +5,7 @@ var CONFIG = require("./config.json");
 var dbName = CONFIG.dbName;
 var dbPort = CONFIG.dbPort;
 var dbHost = CONFIG.dbHost;
+var dbCollection = CONFIG.dbCollection;
 var url = "mongodb://" + dbHost + ":" + dbPort;
  
 var client = new Twitter({
@@ -22,7 +23,7 @@ stream.on('data', function(event) {
         throw err;
     }
     var dbo = db.db(dbName);
-    dbo.collection(dbCollection).insertOne(createJSON(msg, pairJSON), function (err, res) {
+    dbo.collection(dbCollection).insertOne(event, function (err, res) {
         if (err) {
             throw err;
         }
