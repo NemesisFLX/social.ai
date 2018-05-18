@@ -1,1 +1,3 @@
 tools
+
+install pymongo

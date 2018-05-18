@@ -1,6 +1,5 @@
 import pymongo
 
-
 def get_collection():
     client = pymongo.MongoClient('134.255.221.217', 27017)
 
@@ -8,7 +7,11 @@ def get_collection():
     collection = db.twitterMessages
     return collection
 
-if __name__ == "__main__":
+#get courser of entries with the same id
+def get_by_ID(id):
+    return get_collection().find({'id': id})
 
-    collection = get_collection()
-    print(collection.find_one())
+#get just one entry (if static attrubutes like text etc. is needed)
+def get_one_by_ID(id):
+    return get_collection().find_one({'id': id})
+
