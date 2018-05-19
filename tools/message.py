@@ -5,10 +5,23 @@ from tools.connectMDB import get_one_by_ID
 class message(object):
 
     def __init__(self,id):
+        #define all time-dependent attributes with timestamp
         entries = get_by_ID(id)
-        #TODO define map frome timestamps and likes (and followercount
+        self.quote_count = {}
+        self.retweet_count = {}
+        self.favorite_count = {}
+        self.reply_count = {}
+        for singleEntry in entries:
+            self.quote_count.update(
+                {'time': singleEntry['timestamp_ms'], 'quote': singleEntry['quote_count']})
+            self.retweet_count.update(
+                {'time': singleEntry['timestamp_ms'], 'retweet': singleEntry['retweet_count']})
+            self.favorite_count.update(
+                {'time': singleEntry['timestamp_ms'], 'favorite': singleEntry['favorite_count']})
+            self.reply_count.update(
+                {'time': singleEntry['timestamp_ms'], 'reply': singleEntry['reply_count']})
 
-        #define all attributes
+        #define all other attributes
         entry = get_one_by_ID(id)
         self.text = entry['text']
         self.created_at = entry['created_at']
