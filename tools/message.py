@@ -13,13 +13,13 @@ class message(object):
         self.reply_count = {}
         for singleEntry in entries:
             self.quote_count.update(
-                {'time': singleEntry['timestamp_ms'], 'quote': singleEntry['quote_count']})
+                {singleEntry['timestamp_ms']: singleEntry['quote_count']})
             self.retweet_count.update(
-                {'time': singleEntry['timestamp_ms'], 'retweet': singleEntry['retweet_count']})
+                {singleEntry['timestamp_ms']: singleEntry['retweet_count']})
             self.favorite_count.update(
-                {'time': singleEntry['timestamp_ms'], 'favorite': singleEntry['favorite_count']})
+                {singleEntry['timestamp_ms']: singleEntry['favorite_count']})
             self.reply_count.update(
-                {'time': singleEntry['timestamp_ms'], 'reply': singleEntry['reply_count']})
+                {singleEntry['timestamp_ms']: singleEntry['reply_count']})
 
         #define all other attributes
         entry = get_one_by_ID(id)
@@ -44,4 +44,7 @@ class message(object):
 
 if __name__ == "__main__":
     # 9.967880685930947e+17 is the ID of the first entry in the Dataset
-    m= message(9.967880685930947e+17)
+    m = message(9.967880685930947e+17)
+    d = m.quote_count
+    for key in d.keys():
+        print("Timestamp in ms: " + key + "  |  No. of quotes: " + str(d[key]))
