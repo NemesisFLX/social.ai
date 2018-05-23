@@ -1,6 +1,18 @@
 from tools.connectMDB import get_by_ID
 from tools.connectMDB import get_one_by_ID
 from tools.connectMDB import get_collection
+import sys
+
+
+def progress(count, total, status=''):
+    bar_len = 60
+    filled_len = int(round(bar_len * count / float(total)))
+
+    percents = round(100.0 * count / float(total), 1)
+    bar = '=' * filled_len + '-' * (bar_len - filled_len)
+
+    sys.stdout.write('[%s] %s%s ...%s\r' % (bar, percents, '%', status))
+
 
 class message(object):
 
@@ -73,6 +85,35 @@ def get_clean_text(message = message, options=['www','https']):
             if opt in word:
                 arr.remove(word)
     return arr
+
+def print_hashtags():
+    coll = get_collection().find()
+    for entry in coll:
+        h = entry["entities"]["hashtags"]
+        for i in range(h.__len__() - 1):
+            print(h[i]["text"])
+
+#works but way too slow... (we need some new database ?)
+#constructions of all hashtags mapped to all words in these tweets
+def build_hashtag_map():
+    coll = get_collection().find()
+    hashtag_text_map = {}
+    counter = 0
+    abs_length = coll.count()
+
+    for entry in coll:
+        hashtags = entry["entities"]["hashtags"]
+        text = entry["text"].split()
+
+        for i in range(hashtags.__len__()-1):
+            if hashtags[i]["text"] in hashtag_text_map.keys():
+                hashtag_text_map[hashtags[i]["text"]].extend(text)
+            else:
+                hashtag_text_map[hashtags[i]["text"]]=text
+        counter = counter +1
+        progress(counter,abs_length)
+    return hashtag_text_map
+
 
 
 
